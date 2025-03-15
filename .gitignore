@@ -1,0 +1,8 @@
+# .gitignore 核心内容
+/venv/
+*.py[cod]
+__pycache__/
+.env
+/db.sqlite3
+/collectedstatic/
+/logs/*.log
