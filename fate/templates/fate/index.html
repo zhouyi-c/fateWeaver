@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术栈展示</title>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 1rem;
+            width: 150px;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .django { color: #092E20; }  /* Django官方绿 */
+        .vue { color: #42b883; }     /* Vue官方绿 */
+        .mysql { color: #00758F; }   /* MySQL官方橙 */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>核心技术栈</h1>
+        <div class="tech-stack">
+            <div class="tech-item">
+                <i class="fab fa-python tech-icon django"></i>
+                <h3>Django</h3>
+                <p>后端开发框架</p>
+            </div>
+
+            <div class="tech-item">
+                <i class="fab fa-vuejs tech-icon vue"></i>
+                <h3>Vue.js</h3>
+                <p>前端框架</p>
+            </div>
+
+            <div class="tech-item">
+                <i class="fas fa-database tech-icon mysql"></i>
+                <h3>MySQL</h3>
+                <p>数据库系统</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
