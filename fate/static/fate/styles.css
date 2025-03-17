@@ -1,0 +1,25 @@
+  <style>
+    /* 修改后的CSS */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      overflow-y: scroll; /* 恢复默认滚动 */
+    }
+    .content {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .blank-page {
+      height: 100vh;
+      width: 100%;
+      background: transparent;
+    }
+    /* 保留原有视觉样式 */
+    .back-3, .back-2, .back-1 {
+      position: absolute;
+      /* 原有图片定位样式保持不变 */
+    }
+  </style>
