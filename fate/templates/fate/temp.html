@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZHOU</title>
+  {% load static %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'fate/css/styles.css' %}">
+  <style>
+    /* 添加自定义样式 */
+    .blank-page {
+      height: 100vh;
+      width: 100%;
+      background: transparent;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .scroll-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-container">
+    <div class="content">
+      <img src="{% static 'fate/images/bac 3.png' %}" alt="background" class="back-3">
+      <div class="title">
+        <h3>The Land of calm</h3>
+        <h1>ZHOU</h1>
+      </div>
+      <img src="{% static 'fate/images/bac 2.2.png' %}" alt="background" class="back-2">
+      <img src="{% static 'fate/images/bac 1.png' %}" alt="background" class="back-1">
+      <div class="info-wrap">
+        <p>I'D LIKE TO SHARE SOME OF MY BOUNDLESS ENTHUSIASM....</p>
+      </div>
+
+    </div>
+
+    <!-- 空白页面 -->
+    <div class="blank-page"></div>
+    <div class="blank-page"></div>
+    <div class="blank-page"></div>
+  </div>
+
+  <script>
+    // 滚动控制逻辑
+    let currentPage = 0;
+    const pageCount = document.querySelectorAll('.content, .blank-page').length;
+    const container = document.querySelector('.scroll-container');
+    let isScrolling = false;
+
+    // 鼠标滚轮事件
+    window.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (isScrolling) return;
+      
+      const delta = Math.sign(e.deltaY);
+      if (delta > 0) {
+        scrollToNext();
+      } else {
+        scrollToPrev();
+      }
+    }, { passive: false });
+
+    // 触摸滑动事件（移动端支持）
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      if (isScrolling) return;
+      
+      const touchEndY = e.touches[0].clientY;
+      const delta = touchStartY - touchEndY;
+      if (Math.abs(delta) > 50) {
+        if (delta > 0) {
+          scrollToNext();
+        } else {
+          scrollToPrev();
+        }
+      }
+    }, { passive: false });
+
+    function scrollToNext() {
+      if (currentPage < pageCount - 1) {
+        currentPage++;
+        smoothScroll();
+      }
+    }
+
+    function scrollToPrev() {
+      if (currentPage > 0) {
+        currentPage--;
+        smoothScroll();
+      }
+    }
+
+    function smoothScroll() {
+      isScrolling = true;
+      const targetY = window.innerHeight * currentPage;
+      container.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+      });
+
+      // 500ms后重置滚动锁定
+      setTimeout(() => {
+        isScrolling = false;
+      }, 500);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/* static/css/fate.css */
+/* 在现有样式基础上添加 */
+.tech-stack-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tech-stack-card:hover {
+    transform: translateY(-5px) rotateZ(1deg);
+}
+
+pre code .text-info { color: #17a2b8; }
+pre code .text-success { color: #28a745; }
+pre code .text-warning { color: #ffc107; }
+pre code .text-danger { color: #dc3545; }

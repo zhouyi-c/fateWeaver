@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZHOU</title>
+  {% load static %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'fate/css/styles.css' %}">
+  <style>
+    /* 修改后的CSS */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      overflow-y: scroll; /* 恢复默认滚动 */
+    }
+    .content {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .blank-page {
+      height: 100vh;
+      width: 100%;
+      background: transparent;
+    }
+    /* 保留原有视觉样式 */
+    .back-3, .back-2, .back-1 {
+      position: absolute;
+      /* 原有图片定位样式保持不变 */
+    }
+  </style>
+</head>
+<body>
+  <!-- 首屏内容 -->
+  <div class="content">
+    <img src="{% static 'fate/images/bac 3.png' %}" alt="background" class="back-3">
+    <div class="title">
+      <h3>The Land of calm</h3>
+      <h1>ZHOU</h1>
+    </div>
+    <img src="{% static 'fate/images/bac 2.2.png' %}" alt="background" class="back-2">
+    <img src="{% static 'fate/images/bac 1.png' %}" alt="background" class="back-1">
+    <div class="info-wrap">
+      <p>I'D LIKE TO SHARE SOME OF MY BOUNDLESS ENTHUSIASM....</p>
+    </div>
+    <div class="cta">
+      <button onclick="smoothScrollToNext()"><!-- fate/templates/fate/index.html -->
+      <div class="logout-section">
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">
+            <i class="bi bi-box-arrow-left"></i> 安全退出
+          </button>
+        </form>
+      
+        Explore More
+        <i class="fa-solid fa-arrow-down"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 后续内容 -->
+  <div class="blank-page"></div>
+  <div class="blank-page"></div>
+  <div class="blank-page"></div>
+
+  <script>
+    // 移除强制分页逻辑，保留按钮功能
+    function smoothScrollToNext() {
+      window.scrollBy({
+        top: window.innerHeight * 0.8, // 滚动80%屏幕高度
+        behavior: 'smooth'
+      });
+    }
+
+    // 可选：首屏加载时隐藏滚动条
+    document.documentElement.style.overflow = 'hidden';
+    window.addEventListener('scroll', () => {
+      if (window.scrollY === 0) {
+        document.documentElement.style.overflow = 'hidden';
+      } else {
+        document.documentElement.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>

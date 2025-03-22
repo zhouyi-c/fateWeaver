@@ -16,8 +16,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, include
+from django.contrib.auth.views import LoginView
+from users.views import CustomLoginView, CustomLogoutView
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('',CustomLoginView.as_view(), name='login'),
+    path('logout/', CustomLogoutView.as_view(), name='logout'),
+    path('admin/', admin.site.urls),
+    path('fate/', include('fate.urls')),  # 包含应用路由
+    path('users/', include('users.urls')),
 ]
