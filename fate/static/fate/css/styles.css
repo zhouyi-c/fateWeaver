@@ -9,13 +9,11 @@
 }
 
 body {
-  background-image: url(img/bac\ 4.png);
+  background-image: url(img/bac 4.png);
   background-size: cover;
-  background-position: top;
+  background-position: top;  /* 此处添加分号 */
   background-repeat: no-repeat;
-  overflow: hidden;
 }
-
 body::after {
   content: '';
   position: absolute;

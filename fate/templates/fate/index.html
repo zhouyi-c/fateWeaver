@@ -47,7 +47,15 @@
       <p>I'D LIKE TO SHARE SOME OF MY BOUNDLESS ENTHUSIASM....</p>
     </div>
     <div class="cta">
-      <button onclick="smoothScrollToNext()">
+      <button onclick="smoothScrollToNext()"><!-- fate/templates/fate/index.html -->
+      <div class="logout-section">
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">
+            <i class="bi bi-box-arrow-left"></i> 安全退出
+          </button>
+        </form>
+      
         Explore More
         <i class="fa-solid fa-arrow-down"></i>
       </button>
